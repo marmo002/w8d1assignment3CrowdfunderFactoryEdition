@@ -17,7 +17,7 @@ class ProjectTest < ActiveSupport::TestCase
     project = new_project
     project.user_id = nil
     project.save
-    assert project.invalid?, 'Project should not save without owner.'
+    assert project.invalid?, true
   end
 
   def new_project
