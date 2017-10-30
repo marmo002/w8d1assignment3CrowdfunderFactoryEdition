@@ -2,6 +2,16 @@ require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
 
+  test "project send_date must later than start_date" do
+    owner = new_user
+    owner.save
+    project = new_project
+    project.user = owner
+    project.end_date = Date.yesterday
+    project.save
+    assert project.invalid?
+  end
+
   test "project start_date must be in future" do
     owner = new_user
     owner.save
