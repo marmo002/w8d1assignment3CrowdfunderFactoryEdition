@@ -10,8 +10,7 @@ class Pledge < ApplicationRecord
   private
 
   def owner_not_pledge_own_project
-    project_user = Project.find(:project_id).user
-    if user_id == project_user
+    if project.user == user
       errors.add( :user_id, "Owner should not be able to pledge his own project")
     end
   end
