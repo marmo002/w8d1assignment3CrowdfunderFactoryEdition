@@ -12,16 +12,17 @@ class Project < ActiveRecord::Base
 
   private
 
+
   def start_date_must_be_in_future
     today = Date.today
-    unless start_date >= today
-      errors.add(:start_date, "Date can't be in the past! You silly")
+    if start_date != nil && start_date < today
+      errors.add(:start_date, "can't be in the past! You silly")
     end
   end
 
   def end_date_must_be_later_than_start_date
-    unless end_date > start_date
-      errors.add(:end_date, "Your end date should be greater that your start date buddy!")
+    if end_date != nil && end_date < start_date
+      errors.add(:end_date, "can't be before your start date buddy!")
     end
   end
 
