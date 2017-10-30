@@ -1,8 +1,20 @@
 require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
+  
+  test 'project_goal_amount_must_be_positive' do
+    owner = new_user
+    owner.save
+    project = new_project
+    project.user = owner
+    project.goal = -500
+    project.save
+    refute project.valid?
+    refute project.persisted?
+  end
 
-  test "project send_date must later than start_date" do
+
+  test "project_end_date must later than start_date" do
     owner = new_user
     owner.save
     project = new_project
