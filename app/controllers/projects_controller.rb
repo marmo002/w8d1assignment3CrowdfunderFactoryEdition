@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
     @project.image = params[:project][:image]
     @project.user_id = current_user.id
 
-    if @project.save!
+    if @project.save
       redirect_to projects_url
     else
       render :new
