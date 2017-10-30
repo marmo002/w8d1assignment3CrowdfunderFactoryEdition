@@ -9,7 +9,8 @@ class ProjectTest < ActiveSupport::TestCase
     project.user = owner
     project.goal = -500
     project.save
-    assert project.invalid?
+    refute project.valid?
+    refute project.persisted?
   end
 
   test 'valid project can be created' do
