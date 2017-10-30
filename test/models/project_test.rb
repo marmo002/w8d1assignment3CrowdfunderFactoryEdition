@@ -2,6 +2,16 @@ require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
 
+  test 'project_goal_amount_must_be_positive' do
+    owner = new_user
+    owner.save
+    project = new_project
+    project.user = owner
+    project.goal = -500
+    project.save
+    assert project.invalid?
+  end
+
   test 'valid project can be created' do
     owner = new_user
     owner.save
