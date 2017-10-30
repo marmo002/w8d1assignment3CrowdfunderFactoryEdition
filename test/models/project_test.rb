@@ -17,7 +17,7 @@ class ProjectTest < ActiveSupport::TestCase
     project = new_project
     project.user_id = nil
     project.save
-    assert project.invalid?, true
+    assert project.invalid?
   end
 
   def new_project
